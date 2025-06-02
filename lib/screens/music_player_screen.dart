@@ -20,6 +20,23 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     });
   }
 
+  ValueNotifier<double> _scroll = ValueNotifier(0.0);
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      // print(_pageController.page); // 현재 페이지(스크롤 위치)
+      _scroll.value = _pageController.page ?? 0;
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,23 +71,38 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 350,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                          offset: Offset(0, 8),
+                  ValueListenableBuilder(
+                    valueListenable: _scroll, // 여기서만 스크롤 값 추적
+                    builder: (context, scroll, child) {
+                      final difference = (scroll - index).abs();
+                      final scale = 1 - (difference * 0.12);
+                      /*print('카드 ${index + 1}에서 $difference만큼 떨어져 있습니다.');
+                      print('카드 ${index + 1}은 $scale배가 됩니다.');*/
+
+                      return Transform.scale(
+                        scale: scale,
+                        child: Container(
+                          height: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.4),
+                                blurRadius: 10,
+                                spreadRadius: 2,
+                                offset: Offset(0, 8),
+                              ),
+                            ],
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'assets/covers/${index + 1}.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ],
-                      image: DecorationImage(
-                        image: AssetImage('assets/covers/${index + 1}.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                      );
+                    },
                   ),
                   SizedBox(height: 35),
                   Text(

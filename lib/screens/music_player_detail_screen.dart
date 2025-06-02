@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MusicPlayerDetailScreen extends StatefulWidget {
-  final int index;
+  final int imgIdx;
 
-  const MusicPlayerDetailScreen({super.key, required this.index});
+  const MusicPlayerDetailScreen({super.key, required this.imgIdx});
 
   @override
   State<MusicPlayerDetailScreen> createState() =>
@@ -21,7 +21,7 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen> {
           Align(
             alignment: Alignment.center,
             child: Hero(
-              tag: '${widget.index}',
+              tag: '${widget.imgIdx}',
               child: Container(
                 height: 350,
                 width: 350,
@@ -36,7 +36,7 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen> {
                     ),
                   ],
                   image: DecorationImage(
-                    image: AssetImage('assets/covers/${widget.index}.jpg'),
+                    image: AssetImage('assets/covers/${widget.imgIdx}.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),

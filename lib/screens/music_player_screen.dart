@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animations/screens/music_player_detail_screen.dart';
+
+import 'music_player_detail_screen.dart';
 
 class MusicPlayerScreen extends StatefulWidget {
   const MusicPlayerScreen({super.key});
@@ -26,8 +27,36 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   void _onTabCover(int index) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => MusicPlayerDetailScreen(index: index),
+      PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 700),
+        reverseTransitionDuration: Duration(milliseconds: 700),
+        pageBuilder:
+            // ScaleTransition
+            /*(context, animation, secondaryAnimation) => ScaleTransition(
+              scale: animation,
+              child: MusicPlayerDetailScreen(imgIdx: index),
+            ),*/
+            // RotationTransition
+            /*(context, animation, secondaryAnimation) => RotationTransition(
+              turns: animation,
+              child: MusicPlayerDetailScreen(imgIdx: index),
+            ),*/
+            // SlideTransition
+            /*(context, animation, secondaryAnimation) {
+              final offset = Tween<Offset>(
+                begin: Offset(1, 1),
+                end: Offset.zero,
+              ).animate(animation);
+              return SlideTransition(
+                position: offset,
+                child: MusicPlayerDetailScreen(imgIdx: index),
+              );
+            }*/
+            // PadeTransition
+            (context, animation, secondaryAnimation) => FadeTransition(
+              opacity: animation,
+              child: MusicPlayerDetailScreen(imgIdx: index),
+            ),
       ),
     );
   }

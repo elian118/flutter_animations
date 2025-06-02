@@ -3,6 +3,7 @@ import 'package:flutter_animations/screens/apple_watch_screen.dart';
 import 'package:flutter_animations/screens/color_tween_screen.dart';
 import 'package:flutter_animations/screens/curved_animation_screen.dart';
 import 'package:flutter_animations/screens/implicit_animation_screen.dart';
+import 'package:flutter_animations/screens/music_player_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
 import 'package:flutter_animations/screens/value_notifier_screen.dart';
 
@@ -57,9 +58,15 @@ class MenuScreen extends StatelessWidget {
               onPressed: () => _goToPage(context, AppleWatchScreen()),
               child: Text('Apple Watch'),
             ),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () => _goToPage(context, SwipingCardsScreen()),
               child: Text('Swiping Cards'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _goToPage(context, MusicPlayerScreen()),
+              child: Text('Music Player'),
             ),
           ],
         ),

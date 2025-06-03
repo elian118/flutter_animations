@@ -12,16 +12,27 @@ class MusicPlayerDetailScreen extends StatefulWidget {
 }
 
 class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _progressController = AnimationController(
     vsync: this,
     value: 0.0,
-    duration: Duration(minutes: 150),
+    duration: Duration(minutes: 100),
   )..repeat(reverse: true); // 리버스 반복 옵션 추가
+
+  late final AnimationController _marqueeController = AnimationController(
+    vsync: this,
+    duration: Duration(seconds: 20),
+  )..repeat(reverse: true);
+
+  late final Animation<Offset> _marqueeTween = Tween(
+    begin: Offset(0.1, 0),
+    end: Offset(-0.6, 0),
+  ).animate(_marqueeController);
 
   @override
   void dispose() {
     _progressController.dispose();
+    _marqueeController.dispose();
     super.dispose();
   }
 
@@ -107,6 +118,22 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
                   ],
                 );
               },
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            "Interstellar",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 5),
+          SlideTransition(
+            position: _marqueeTween,
+            child: Text(
+              "A Film by Christopher Nolan - Original Motion Picture Soundtrack",
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+              softWrap: false,
+              style: TextStyle(fontSize: 18),
             ),
           ),
         ],

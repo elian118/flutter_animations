@@ -86,7 +86,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           AnimatedSwitcher(
             duration: Duration(milliseconds: 500),
             child: Container(
-              // 키 속성을 부여해야 플러터에게 새로운 child가 생성됨을 알릴 수 있다.
+              // 키 속성을 부여해야 플러터에게 새로운 child가 생성 됨을 알릴 수 있다.
               key: ValueKey(_currentPage),
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -94,10 +94,10 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   fit: BoxFit.cover, // 전체 확장
                 ),
               ),
-              // 배경필터 처리
+              // 배경 필터 처리
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: Container(color: Colors.black.withOpacity(0.5)),
+                child: Container(color: Colors.black.withValues(alpha: 0.5)),
               ),
             ),
           ),
@@ -115,8 +115,8 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                     builder: (context, scroll, child) {
                       final difference = (scroll - index).abs();
                       final scale = 1 - (difference * 0.12);
-                      /*print('카드 ${index + 1}에서 $difference만큼 떨어져 있습니다.');
-                      print('카드 ${index + 1}은 $scale배가 됩니다.');*/
+                      /*print('카드 ${index + 1}에서 $difference 만큼 떨어져 있습니다.');
+                      print('카드 ${index + 1}은 $scale 배가 됩니다.');*/
 
                       return GestureDetector(
                         onTap: () => _onTabCover(index + 1),
@@ -130,7 +130,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.4),
+                                    color: Colors.black.withValues(alpha: 0.4),
                                     blurRadius: 10,
                                     spreadRadius: 2,
                                     offset: Offset(0, 8),

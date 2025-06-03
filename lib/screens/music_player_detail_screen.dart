@@ -16,7 +16,7 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
   late final AnimationController _progressController = AnimationController(
     vsync: this,
     value: 0.0,
-    duration: Duration(seconds: 90),
+    duration: Duration(minutes: 150),
   )..repeat(reverse: true); // 리버스 반복 옵션 추가
 
   @override

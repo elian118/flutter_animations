@@ -101,7 +101,7 @@ class _ValueNotifierScreenn extends State<ValueNotifierScreen>
 
   @override
   Widget build(BuildContext context) {
-    print('build');
+    // print('build');
     return Scaffold(
       appBar: AppBar(title: Text('with Value notifier')),
       body: Center(

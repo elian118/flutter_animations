@@ -22,7 +22,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     });
   }
 
-  ValueNotifier<double> _scroll = ValueNotifier(0.0);
+  final ValueNotifier<double> _scroll = ValueNotifier(0.0);
 
   void _onTabCover(int index) {
     Navigator.push(

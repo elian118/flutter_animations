@@ -5,6 +5,7 @@ import 'package:flutter_animations/screens/curved_animation_screen.dart';
 import 'package:flutter_animations/screens/implicit_animation_screen.dart';
 import 'package:flutter_animations/screens/music_player_screen.dart';
 import 'package:flutter_animations/screens/rive_custom_balls_screen.dart';
+import 'package:flutter_animations/screens/rive_custom_btn_screen.dart';
 import 'package:flutter_animations/screens/rive_dwarf_screen.dart';
 import 'package:flutter_animations/screens/rive_stars_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
@@ -85,6 +86,11 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () => _goToPage(context, RiveCustomBallsScreen()),
               child: Text('Rive - Custom Balls'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _goToPage(context, RiveCustomBtnScreen()),
+              child: Text('Rive - Custom Button'),
             ),
           ],
         ),

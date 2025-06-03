@@ -38,29 +38,49 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
     duration: Duration(milliseconds: 500),
   );
 
-  late final Animation<Offset> _marqueeTween = Tween(
+  late final Animation<Offset> _marqueeTween = Tween<Offset>(
     begin: Offset(0.1, 0),
     end: Offset(-0.6, 0),
   ).animate(_marqueeController);
 
-  late final Animation<double> _screenScale = Tween(
+  late final Animation<double> _screenScale = Tween<double>(
     begin: 1.0,
     end: 0.7,
   ).animate(
     // Interval -> 부모 애니메이션의 동작 구간 중 일부에서만 이 애니메이션이 실행하도록 설정
     CurvedAnimation(
       parent: _menuController,
-      curve: Interval(0.0, 0.5, curve: _menuCurve),
+      curve: Interval(0.0, 0.3, curve: _menuCurve),
     ),
   );
 
-  late final Animation<Offset> _screenOffset = Tween(
+  late final Animation<Offset> _screenOffset = Tween<Offset>(
     begin: Offset.zero,
     end: Offset(0.5, 0.0),
   ).animate(
     CurvedAnimation(
       parent: _menuController,
-      curve: Interval(0.5, 1.0, curve: _menuCurve),
+      curve: Interval(0.2, 0.4, curve: _menuCurve),
+    ),
+  );
+
+  late final Animation<double> _closeBtnOpacity = Tween<double>(
+    begin: 0.0,
+    end: 1.0,
+  ).animate(
+    CurvedAnimation(
+      parent: _menuController,
+      curve: Interval(0.3, 0.5, curve: _menuCurve),
+    ),
+  );
+
+  late final Animation<Offset> _profileSlide = Tween<Offset>(
+    begin: Offset(-1, 0),
+    end: Offset.zero,
+  ).animate(
+    CurvedAnimation(
+      parent: _menuController,
+      curve: Interval(0.4, 0.7, curve: _menuCurve),
     ),
   );
 
@@ -117,7 +137,10 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
           appBar: AppBar(
             backgroundColor: Colors.black,
             foregroundColor: Colors.white,
-            leading: IconButton(onPressed: _closeMenu, icon: Icon(Icons.close)),
+            leading: FadeTransition(
+              opacity: _closeBtnOpacity,
+              child: IconButton(onPressed: _closeMenu, icon: Icon(Icons.close)),
+            ),
           ),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
@@ -127,18 +150,21 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
                 ...menus.map(
                   (menu) => Column(
                     children: [
-                      Row(
-                        children: [
-                          Icon(menu['icon'], color: Colors.grey.shade200),
-                          SizedBox(width: 10),
-                          Text(
-                            menu['text'],
-                            style: TextStyle(
-                              color: Colors.grey.shade200,
-                              fontSize: 18,
+                      SlideTransition(
+                        position: _profileSlide,
+                        child: Row(
+                          children: [
+                            Icon(menu['icon'], color: Colors.grey.shade200),
+                            SizedBox(width: 10),
+                            Text(
+                              menu['text'],
+                              style: TextStyle(
+                                color: Colors.grey.shade200,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       SizedBox(height: 20),
                     ],

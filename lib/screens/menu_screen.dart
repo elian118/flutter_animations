@@ -4,7 +4,8 @@ import 'package:flutter_animations/screens/color_tween_screen.dart';
 import 'package:flutter_animations/screens/curved_animation_screen.dart';
 import 'package:flutter_animations/screens/implicit_animation_screen.dart';
 import 'package:flutter_animations/screens/music_player_screen.dart';
-import 'package:flutter_animations/screens/rive_screen.dart';
+import 'package:flutter_animations/screens/rive_dwarf_screen.dart';
+import 'package:flutter_animations/screens/rive_stars_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
 import 'package:flutter_animations/screens/value_notifier_screen.dart';
 
@@ -71,8 +72,13 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () => _goToPage(context, RiveScreen()),
-              child: Text('Rive'),
+              onPressed: () => _goToPage(context, RiveDwarfScreen()),
+              child: Text('Rive - Dwarf'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _goToPage(context, RiveStarsScreen()),
+              child: Text('Rive - Stars'),
             ),
           ],
         ),

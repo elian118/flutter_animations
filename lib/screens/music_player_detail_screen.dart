@@ -24,15 +24,27 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
     duration: Duration(seconds: 20),
   )..repeat(reverse: true);
 
+  late final AnimationController _playPauseController = AnimationController(
+    vsync: this,
+    duration: Duration(milliseconds: 500),
+  );
+
   late final Animation<Offset> _marqueeTween = Tween(
     begin: Offset(0.1, 0),
     end: Offset(-0.6, 0),
   ).animate(_marqueeController);
 
+  void _onPlayPauseTap() {
+    _playPauseController.isCompleted
+        ? _playPauseController.reverse()
+        : _playPauseController.forward();
+  }
+
   @override
   void dispose() {
     _progressController.dispose();
     _marqueeController.dispose();
+    _playPauseController.dispose();
     super.dispose();
   }
 
@@ -134,6 +146,30 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
               overflow: TextOverflow.visible,
               softWrap: false,
               style: TextStyle(fontSize: 18),
+            ),
+          ),
+          SizedBox(height: 30),
+          GestureDetector(
+            onTap: _onPlayPauseTap,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedIcon(
+                  icon: AnimatedIcons.pause_play,
+                  progress: _playPauseController,
+                  size: 60,
+                ),
+                /*LottieBuilder.asset(
+                  "assets/animations/play-lottie.json",
+                  controller: _playPauseController,
+                  // 애니메이션 시간을 로티 애니메이션 시간으로 동기화
+                  onLoaded: (composition) {
+                    _playPauseController.duration = composition.duration;
+                  },
+                  width: 80,
+                  height: 80,
+                ),*/
+              ],
             ),
           ),
         ],

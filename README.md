@@ -2,15 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## Packages and sites
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Lottie](https://pub.dev/packages/lottie/install)
+  - 애플터이펙트로 만든 움직이는 아이콘 표현을 도와주는 플러터 패키지. 
+  - 플러터에서 자체 제공하는 AnimatedIcon 위젯만으로는 사용 가능한 아이콘이 매우 적다. 맘에 드는 애니메이션 여기서 아이콘을 찾을 수 없다면 Lottie 패키지에서 도움을 받아라.
+- [LotteFiles](https://lottiefiles.com/)
+  - Lottie로 사용 가능한 아이콘 파일을 제공하는 커뮤니티 사이트(부분 유료)

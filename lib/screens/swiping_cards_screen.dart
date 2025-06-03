@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../widgets/comps/cover.dart';
+
 class SwipingCardsScreen extends StatefulWidget {
   const SwipingCardsScreen({super.key});
 
@@ -101,7 +103,7 @@ class _SwipingCardsScreenState extends State<SwipingCardsScreen>
                 child: Transform.scale(
                   // 1을 넘어가면 애니메이션 패턴으로 인해 본래 크기보다 커지는 일 발생하므로 1.0보다 커지지 않도록 강제
                   scale: min(scale, 1.0),
-                  child: Card(index: _index % 5 > 0 ? _index + 1 : 1),
+                  child: Cover(index: _index % 5 > 0 ? _index + 1 : 1),
                 ),
               ),
               Positioned(
@@ -113,7 +115,7 @@ class _SwipingCardsScreenState extends State<SwipingCardsScreen>
                     onHorizontalDragEnd: _onHorizontalDragEnd,
                     child: Transform.rotate(
                       angle: angle * pi / 180, // 180도 이내로 한정
-                      child: Card(index: _index),
+                      child: Cover(index: _index),
                     ),
                   ),
                 ),
@@ -182,27 +184,6 @@ class _SwipingCardsScreenState extends State<SwipingCardsScreen>
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class Card extends StatelessWidget {
-  final int index;
-
-  const Card({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Material(
-      elevation: 10,
-      borderRadius: BorderRadius.circular(10),
-      clipBehavior: Clip.hardEdge,
-      child: SizedBox(
-        width: size.width * 0.8,
-        height: size.height * 0.5,
-        child: Image.asset('assets/covers/$index.jpg', fit: BoxFit.cover),
       ),
     );
   }

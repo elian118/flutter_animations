@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/utils/format.dart';
 
 class MusicPlayerDetailScreen extends StatefulWidget {
   final int imgIdx;
@@ -10,10 +11,24 @@ class MusicPlayerDetailScreen extends StatefulWidget {
       _MusicPlayerDetailScreenState();
 }
 
-class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen> {
+class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _progressController = AnimationController(
+    vsync: this,
+    value: 0.0,
+    duration: Duration(seconds: 90),
+  )..repeat(reverse: true); // 리버스 반복 옵션 추가
+
+  @override
+  void dispose() {
+    _progressController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(title: Text("Interstellar")),
       body: Column(
@@ -45,9 +60,54 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen> {
             ),
           ),
           SizedBox(height: 50),
-          CustomPaint(
-            size: Size(size.width - 80, 5),
-            painter: ProgressBar(progresValue: 180),
+          AnimatedBuilder(
+            animation: _progressController,
+            builder:
+                (context, child) => CustomPaint(
+                  size: Size(size.width - 80, 5),
+                  painter: ProgressBar(
+                    progressValue: _progressController.value,
+                  ),
+                ),
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: AnimatedBuilder(
+              animation: _progressController,
+              builder: (context, child) {
+                String playTime = Format.toTime(
+                  _progressController.value,
+                  _progressController.duration!,
+                );
+                String restTime = Format.toTime(
+                  1 - _progressController.value,
+                  _progressController.duration!,
+                );
+
+                return Row(
+                  children: [
+                    Text(
+                      playTime,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      restTime,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -56,12 +116,14 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen> {
 }
 
 class ProgressBar extends CustomPainter {
-  final double progresValue;
+  final double progressValue;
 
-  ProgressBar({super.repaint, required this.progresValue});
+  ProgressBar({super.repaint, required this.progressValue});
 
   @override
   void paint(Canvas canvas, Size size) {
+    final progress = size.width * progressValue; // 0~1 -> 사이즈 변환 값
+
     // track bar
     final trackPaint =
         Paint()
@@ -88,7 +150,7 @@ class ProgressBar extends CustomPainter {
     final progressRRect = RRect.fromLTRBR(
       0,
       0,
-      progresValue,
+      progress,
       size.height,
       Radius.circular(10),
     );
@@ -97,15 +159,14 @@ class ProgressBar extends CustomPainter {
 
     // thumb
     canvas.drawCircle(
-      Offset(progresValue, size.height / 2),
+      Offset(progress, size.height / 2),
       10,
       progressPaint, // 진행바 페인트 재활용
     );
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    //
-    return true;
+  bool shouldRepaint(covariant ProgressBar oldDelegate) {
+    return oldDelegate.progressValue != progressValue;
   }
 }

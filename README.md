@@ -8,4 +8,10 @@ A new Flutter project.
   - 애플터이펙트로 만든 움직이는 아이콘 표현을 도와주는 플러터 패키지. 
   - 플러터에서 자체 제공하는 AnimatedIcon 위젯만으로는 사용 가능한 아이콘이 매우 적다. 맘에 드는 애니메이션 여기서 아이콘을 찾을 수 없다면 Lottie 패키지에서 도움을 받아라.
 - [LotteFiles](https://lottiefiles.com/)
-  - Lottie로 사용 가능한 아이콘 파일을 제공하는 커뮤니티 사이트(부분 유료)
+  - Lottie로 사용 가능한 아이콘 파일을 제공하는 커뮤니티 사이트(부분 유료, 회원가입 필요)
+- [Rive](https://rive.app/)
+  - 다양한 플랫폼에서 사용 가능한 애니메이션 제작 도구를 제공하는 사이트(회원가입 필요)
+- [Rive - marketplace](https://rive.app/marketplace/)
+  - 다른 사람들이 제작한 Rive 애니메이션을 보고 내려받을 수 있는 곳(부분 유료)
+  - 애니메이터가 제작한 애니메이션 `riv` 파일을 플러터에서 제어하려면 해당 파일에서 제공하는 상태 및 속성키와 값들을 확인하고 [rive](https://pub.dev/packages/rive/install) 패키지를 사용해 플러터와 이들을 연결해야 한다.
+  - `riv` 파일의 속성 키와 값들을 확인하려면 마켓플레이스 애니메이션 상세보기 페이지에서 볼 수 있는 Preview in Rive 버튼을 눌러 `rive editor`로 해당 파일을 열어봐야 한다.

@@ -4,6 +4,7 @@ import 'package:flutter_animations/screens/color_tween_screen.dart';
 import 'package:flutter_animations/screens/curved_animation_screen.dart';
 import 'package:flutter_animations/screens/implicit_animation_screen.dart';
 import 'package:flutter_animations/screens/music_player_screen.dart';
+import 'package:flutter_animations/screens/rive_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
 import 'package:flutter_animations/screens/value_notifier_screen.dart';
 
@@ -67,6 +68,11 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () => _goToPage(context, MusicPlayerScreen()),
               child: Text('Music Player'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _goToPage(context, RiveScreen()),
+              child: Text('Rive'),
             ),
           ],
         ),

@@ -20,6 +20,7 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
   late final AnimationController _menuController = AnimationController(
     vsync: this,
     duration: Duration(seconds: 2),
+    reverseDuration: Duration(seconds: 1),
   );
 
   late final AnimationController _progressController = AnimationController(
@@ -74,13 +75,39 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
     ),
   );
 
-  late final Animation<Offset> _profileSlide = Tween<Offset>(
+  late final List<Animation<Offset>> _menuAnimations = [
+    for (var i = 0; i < menus.length; i++)
+      Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero).animate(
+        CurvedAnimation(
+          parent: _menuController,
+          curve: Interval(0.4 + (0.1 * i), 0.7 + (0.1 * i), curve: _menuCurve),
+        ),
+      ),
+  ];
+
+  // 다른 방식
+  /*late final List<Animation<Offset>> _menuAnimations =
+      menus.asMap().entries.map((entry) {
+        final int i = entry.key;
+        return Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _menuController,
+            curve: Interval(
+              0.4 + (0.1 * i),
+              0.7 + (0.1 * i),
+              curve: _menuCurve,
+            ),
+          ),
+        );
+      }).toList();*/
+
+  late final Animation<Offset> _logoutSlide = Tween<Offset>(
     begin: Offset(-1, 0),
     end: Offset.zero,
   ).animate(
     CurvedAnimation(
       parent: _menuController,
-      curve: Interval(0.4, 0.7, curve: _menuCurve),
+      curve: Interval(0.8, 1.0, curve: _menuCurve),
     ),
   );
 
@@ -119,6 +146,7 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
 
   @override
   void dispose() {
+    _menuController.dispose();
     _progressController.dispose();
     _marqueeController.dispose();
     _playPauseController.dispose();
@@ -147,11 +175,14 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
             child: Column(
               children: [
                 SizedBox(height: 30),
-                ...menus.map(
-                  (menu) => Column(
+                ...menus.asMap().entries.map((entry) {
+                  final int idx = entry.key;
+                  final Map<String, dynamic> menu = entry.value;
+
+                  return Column(
                     children: [
                       SlideTransition(
-                        position: _profileSlide,
+                        position: _menuAnimations[idx],
                         child: Row(
                           children: [
                             Icon(menu['icon'], color: Colors.grey.shade200),
@@ -168,18 +199,21 @@ class _MusicPlayerDetailScreenState extends State<MusicPlayerDetailScreen>
                       ),
                       SizedBox(height: 20),
                     ],
-                  ),
-                ),
+                  );
+                }),
                 Spacer(),
-                Row(
-                  children: [
-                    Icon(Icons.logout, color: Colors.red),
-                    SizedBox(width: 10),
-                    Text(
-                      'Log out',
-                      style: TextStyle(color: Colors.red, fontSize: 18),
-                    ),
-                  ],
+                SlideTransition(
+                  position: _logoutSlide,
+                  child: Row(
+                    children: [
+                      Icon(Icons.logout, color: Colors.red),
+                      SizedBox(width: 10),
+                      Text(
+                        'Log out',
+                        style: TextStyle(color: Colors.red, fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 100),
               ],

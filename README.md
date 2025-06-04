@@ -1,6 +1,6 @@
 # flutter_animations
 
-A new Flutter project.
+Flutter animation examples.
 
 ## Packages and sites
 

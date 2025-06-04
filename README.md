@@ -14,4 +14,5 @@ Flutter animation examples.
 - [Rive - marketplace](https://rive.app/marketplace/)
   - 다른 사람들이 제작한 Rive 애니메이션을 보고 내려받을 수 있는 곳(부분 유료)
   - 애니메이터가 제작한 애니메이션 `riv` 파일을 플러터에서 제어하려면 해당 파일에서 제공하는 상태 및 속성키와 값들을 확인하고 [rive](https://pub.dev/packages/rive/install) 패키지를 사용해 플러터와 이들을 연결해야 한다.
-  - `riv` 파일의 속성 키와 값들을 확인하려면 마켓플레이스 애니메이션 상세보기 페이지에서 볼 수 있는 Preview in Rive 버튼을 눌러 `rive editor`로 해당 파일을 열어봐야 한다.
+  - Rive로 제작된 파일은 읽기 전용으로 완성본이 배포된 `riv`와 편집 가능한 상태의 `rev` 두 가지로 구분된다. 개발에 사용 가능한 파일은 `riv`이며, 이 파일은 `rive editor`로도 내용 확인 또는 수정이 불가하다.
+  - 마켓플레이스에서는 애니메이션 상세보기 페이지에서 볼 수 있는 Preview in Rive 버튼을 눌러 `rive editor`를 통해 해당 `rev` 파일의 내용을 확인할 수 있다.

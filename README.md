@@ -18,6 +18,7 @@ Flutter animation examples.
   - 마켓플레이스에서는 애니메이션 상세보기 페이지에서 볼 수 있는 Preview in Rive 버튼을 눌러 `rive editor`를 통해 해당 `rev` 파일의 내용을 확인할 수 있다.
 - [flutter_animate](https://pub.dev/packages/flutter_animate)
   - 컨트롤러, 트윈 등의 애니메이션 보일러 플레이트 코드 없이 쉽게 플러터 애니메이션을 구현할 수 있도록 지원하는 아주 유명한 패키지. 보통을 이걸 쓴다.
+  - 특히, 여기 Readme 파일은 여러 애니메이션 효과를 구현하는 손쉽고 유용한 방법들이 서술돼 있으므로 꼼꼼히 읽어볼 것!
 - [collection](https://pub.dev/packages/collection)
   - 플러터의 배열 메서드를 리액트의 배열 메서드처럼 내부 익명 함수에 인자로 넣어 사용할 수 있는 배열 메서드를 추가로 사용할 수 있게 지원한다.
   - 단, 리액트와 다르게 요소와 색인의 인자 위치가 뒤바뀌어 있으므로 유의해야 한다.

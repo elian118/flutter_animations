@@ -14,6 +14,7 @@ import 'package:flutter_animations/screens/rive_stars_screen.dart';
 import 'package:flutter_animations/screens/shared_axis_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
 import 'package:flutter_animations/screens/value_notifier_screen.dart';
+import 'package:flutter_animations/screens/wallet_screen.dart';
 
 List<Map<String, dynamic>> screens = [
   {"title": "Implicit animation", "widget": ImplicitAnimationScreen()},
@@ -35,4 +36,5 @@ List<Map<String, dynamic>> screens = [
   {"title": "Container transform", "widget": ContainerTransformScreen()},
   {"title": "Shared Axis", "widget": SharedAxisScreen()},
   {"title": "Fade Through", "widget": FadeThroughScreen()},
+  {"title": "Wallet", "widget": WalletScreen()},
 ];

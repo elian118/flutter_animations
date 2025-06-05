@@ -13,7 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Animations',
-      theme: ThemeData(colorScheme: ColorScheme.light(primary: Colors.blue)),
+      theme: ThemeData(
+        // useMaterial3: true, // default in latest version
+        navigationBarTheme: NavigationBarThemeData(
+          indicatorColor: Colors.amber,
+          backgroundColor: Colors.blueGrey.shade50,
+        ),
+        colorScheme: ColorScheme.light(primary: Colors.blue),
+      ),
       home: const MenuScreen(),
     );
   }

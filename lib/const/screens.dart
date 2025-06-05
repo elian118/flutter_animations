@@ -4,6 +4,7 @@ import 'package:flutter_animations/screens/combine_explicit_animations_screen.da
 import 'package:flutter_animations/screens/container_transform_screen.dart';
 import 'package:flutter_animations/screens/curved_animation_screen.dart';
 import 'package:flutter_animations/screens/explicit_animation_screen.dart';
+import 'package:flutter_animations/screens/fade_through_screen.dart';
 import 'package:flutter_animations/screens/implicit_animation_screen.dart';
 import 'package:flutter_animations/screens/music_player_screen.dart';
 import 'package:flutter_animations/screens/rive_custom_balls_screen.dart';
@@ -33,4 +34,5 @@ List<Map<String, dynamic>> screens = [
   {"title": "Rive - Custom Button", "widget": RiveCustomBtnScreen()},
   {"title": "Container transform", "widget": ContainerTransformScreen()},
   {"title": "Shared Axis", "widget": SharedAxisScreen()},
+  {"title": "Fade Through", "widget": FadeThroughScreen()},
 ];

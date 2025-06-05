@@ -22,7 +22,7 @@ class MenuScreen extends StatelessWidget {
                 ),
               ),
           separatorBuilder: (context, index) => SizedBox(height: 10),
-          itemCount: 15,
+          itemCount: screens.length,
         ),
       ),
     );

@@ -42,11 +42,9 @@ class _RotatingWalletScreenState extends State<RotatingWalletScreen> {
                           bgColor: card['bgColor'],
                           username: card['username'],
                           number: card['number'],
+                          isExpanded: _isExpanded,
                         )
-                        .animate(
-                          target: _isExpanded ? 0 : 1,
-                          delay: 1.5.seconds,
-                        )
+                        .animate(target: _isExpanded ? 0 : 1)
                         .flipV(end: 0.1)
                         .slideY(end: -0.8 * idx),
                   ),

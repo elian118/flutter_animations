@@ -25,6 +25,7 @@ class _WalletScreenState extends State<WalletScreen> {
                     bgColor: card['bgColor'],
                     username: card['username'],
                     number: card['number'],
+                    isExpanded: true,
                   ),
                 ),
               ]

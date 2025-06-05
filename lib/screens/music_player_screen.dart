@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/const/musics.dart';
 
 import 'music_player_detail_screen.dart';
 
@@ -151,13 +152,20 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   ),
                   SizedBox(height: 35),
                   Text(
-                    "Interstellar",
+                    "${musics[index]['movie']}",
                     style: TextStyle(fontSize: 26, color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "Hans Zimmer",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    "${musics[index]['title']}",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "${musics[index]['composer']}",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               );

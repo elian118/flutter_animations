@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/const/musics.dart';
 import 'package:flutter_animations/screens/detail_screen.dart';
 
 class ContainerTransformListView extends StatelessWidget {
@@ -17,8 +18,8 @@ class ContainerTransformListView extends StatelessWidget {
                 (context, action) => DetailScreen(image: (index % 5) + 1),
             closedBuilder:
                 (context, action) => ListTile(
-                  title: Text("Dune Soundtrack"),
-                  subtitle: Text("Hans Zimmer"),
+                  title: Text("${musics[(index % 5)]['movie']}"),
+                  subtitle: Text("${musics[(index % 5)]['title']}"),
                   leading: Container(
                     width: 50,
                     height: 50,

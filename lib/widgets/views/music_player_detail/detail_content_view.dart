@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/const/musics.dart';
 import 'package:flutter_animations/utils/format.dart';
 import 'package:flutter_animations/widgets/painers/progress_bar.dart';
 import 'package:flutter_animations/widgets/painers/volume_painter.dart';
@@ -126,14 +127,14 @@ class DetailContentView extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                "Interstellar",
+                "${musics[imgIdx - 1]['movie']}",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 5),
               SlideTransition(
                 position: marqueeTween,
                 child: Text(
-                  "A Film by Christopher Nolan - Original Motion Picture Soundtrack",
+                  "A Film by ${musics[imgIdx - 1]['director']} - ${musics[imgIdx - 1]['title']}",
                   maxLines: 1,
                   overflow: TextOverflow.visible,
                   softWrap: false,

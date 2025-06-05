@@ -12,6 +12,7 @@ import 'package:flutter_animations/screens/rive_custom_balls_screen.dart';
 import 'package:flutter_animations/screens/rive_custom_btn_screen.dart';
 import 'package:flutter_animations/screens/rive_dwarf_screen.dart';
 import 'package:flutter_animations/screens/rive_stars_screen.dart';
+import 'package:flutter_animations/screens/rotating_wallet_screen.dart';
 import 'package:flutter_animations/screens/shared_axis_screen.dart';
 import 'package:flutter_animations/screens/swiping_cards_screen.dart';
 import 'package:flutter_animations/screens/value_notifier_screen.dart';
@@ -39,4 +40,5 @@ List<Map<String, dynamic>> screens = [
   {"title": "Fade Through", "widget": FadeThroughScreen()},
   {"title": "Animate Syntax", "widget": AnimateSyntaxScreen()},
   {"title": "Wallet", "widget": WalletScreen()},
+  {"title": "Wallet - rotating", "widget": RotatingWalletScreen()},
 ];

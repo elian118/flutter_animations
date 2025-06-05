@@ -14,23 +14,17 @@ class _WalletScreenState extends State<WalletScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Wallet')),
       body: Center(
-        child: Animate(
-          effects: [
-            FadeEffect(
-              begin: 0,
-              end: 1,
-              duration: 1.seconds, // Duration(seconds: 1),
-              curve: Curves.easeInCubic,
-            ),
-            ScaleEffect(
+        child: Text('Hello!', style: TextStyle(fontSize: 66))
+            .animate()
+            .fadeIn(begin: 0, duration: 1.seconds)
+            .scale(
+              alignment: Alignment.center,
               begin: Offset.zero,
               end: Offset(1, 1),
-              alignment: Alignment.center,
               duration: 1.seconds,
-            ),
-          ],
-          child: Text('Hello!', style: TextStyle(fontSize: 66)),
-        ),
+            )
+            .then(delay: 1.seconds)
+            .slideX(begin: 0, end: -10, duration: 2.seconds),
       ),
     );
   }

@@ -38,15 +38,18 @@ class _RotatingWalletScreenState extends State<RotatingWalletScreen> {
           child: Column(
             children: [
                   ...creditCard.mapIndexed(
-                    (idx, card) => CreditCard(
-                          bgColor: card['bgColor'],
-                          username: card['username'],
-                          number: card['number'],
-                          isExpanded: _isExpanded,
-                        )
-                        .animate(target: _isExpanded ? 0 : 1)
-                        .flipV(end: 0.1)
-                        .slideY(end: -0.8 * idx),
+                    (idx, card) => Hero(
+                      tag: '$idx',
+                      child: CreditCard(
+                            bgColor: card['bgColor'],
+                            username: card['username'],
+                            number: card['number'],
+                            isExpanded: _isExpanded,
+                          )
+                          .animate(target: _isExpanded ? 0 : 1)
+                          .flipV(end: 0.1)
+                          .slideY(end: -0.8 * idx),
+                    ),
                   ),
                 ]
                 .animate(interval: 0.2.seconds)

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_animations/const/credit_cards.dart';
+import 'package:flutter_animations/widgets/comps/credit_card.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -13,18 +14,19 @@ class _WalletScreenState extends State<WalletScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Wallet')),
-      body: Center(
-        child: Text('Hello!', style: TextStyle(fontSize: 66))
-            .animate()
-            .fadeIn(begin: 0, duration: 1.seconds)
-            .scale(
-              alignment: Alignment.center,
-              begin: Offset.zero,
-              end: Offset(1, 1),
-              duration: 1.seconds,
-            )
-            .then(delay: 1.seconds)
-            .slideX(begin: 0, end: -10, duration: 2.seconds),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            ...creditCard.map(
+              (card) => CreditCard(
+                bgColor: card['bgColor'],
+                username: card['username'],
+                number: card['number'],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter_animations/screens/animate_syntax_screen.dart';
 import 'package:flutter_animations/screens/apple_watch_screen.dart';
 import 'package:flutter_animations/screens/color_tween_screen.dart';
 import 'package:flutter_animations/screens/combine_explicit_animations_screen.dart';
@@ -36,5 +37,6 @@ List<Map<String, dynamic>> screens = [
   {"title": "Container transform", "widget": ContainerTransformScreen()},
   {"title": "Shared Axis", "widget": SharedAxisScreen()},
   {"title": "Fade Through", "widget": FadeThroughScreen()},
+  {"title": "Animate Syntax", "widget": AnimateSyntaxScreen()},
   {"title": "Wallet", "widget": WalletScreen()},
 ];
